@@ -31,10 +31,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: ./BookingDemo
-         
-      - name: 'Echo Upload path'
-        run: echo Upload path ${{steps.upload.outputs.upload-path}}
+          path: ./BookingDemo       
+    
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/target/BookingDemo-0.0.1-SNAPSHOT.war'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
