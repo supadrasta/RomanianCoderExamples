@@ -38,9 +38,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    defaults:
-      run:
-        working-directory: ./BookingDemo
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -59,4 +56,4 @@ jobs:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8257B7104FCA431F9985F428B214E831 }}
-          package: 'target/BookingDemo-0.0.1-SNAPSHOT.war'
+          package: 'target/*.war'
