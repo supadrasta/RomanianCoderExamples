@@ -54,5 +54,6 @@ jobs:
         with:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
+          path: '${{ github.workspace }}/target/'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: '${{ github.workspace }}/target/BookingDemo-0.0.1-SNAPSHOT.war'
+          package: 'BookingDemo-0.0.1-SNAPSHOT.war'
