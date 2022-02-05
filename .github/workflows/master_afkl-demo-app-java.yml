@@ -6,7 +6,7 @@ name: Build and deploy WAR app to Azure Web App - afkl-demo-app-java
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
