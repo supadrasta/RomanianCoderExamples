@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./BookingDemo
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +26,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install -DskipTests
-        working-directory: ./BookingDemo
+       # working-directory: ./BookingDemo
             # cd ./BookingDemo            
             # mvn clean install -f ./BookingDemo -DskipTests
 
@@ -31,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: ./BookingDemo       
+        #  path: ./BookingDemo       
     
 
   deploy:
@@ -55,4 +58,4 @@ jobs:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: '/RomanianCoderExamples/RomanianCoderExamples/target/BookingDemo-0.0.1-SNAPSHOT.war'
+          package: '/target/*.war'
