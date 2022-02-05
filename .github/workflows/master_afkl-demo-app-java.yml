@@ -22,10 +22,10 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: |
-            cd ./BookingDemo
-            mvn clean install -DskipTests
-          # mvn clean install -f ./BookingDemo -DskipTests
+        run: mvn clean install -DskipTests
+        working-directory: ./BookingDemo
+            # cd ./BookingDemo            
+            # mvn clean install -f ./BookingDemo -DskipTests
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -54,6 +54,5 @@ jobs:
         with:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
-          path: '${{ github.workspace }}/target/'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: 'BookingDemo-0.0.1-SNAPSHOT.war'
+          package: '/target/BookingDemo-0.0.1-SNAPSHOT.war'
