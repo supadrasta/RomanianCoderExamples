@@ -55,5 +55,4 @@ jobs:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: '/home/runner/work/RomanianCoderExamples/RomanianCoderExamples/target/BookingDemo-0.0.1-SNAPSHOT.war'
-          #/BookingDemo/target/*.war'
+          package: '${{ github.workspace }}/target/BookingDemo-0.0.1-SNAPSHOT.war'
