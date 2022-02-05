@@ -24,8 +24,8 @@ jobs:
       - name: Build with Maven
         run: |
             cd ./BookingDemo
-            mvn clean install -f ./BookingDemo  -DskipTests
-          # mvn clean install  -DskipTests
+            mvn clean install -DskipTests
+          # mvn clean install -f ./BookingDemo -DskipTests
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
