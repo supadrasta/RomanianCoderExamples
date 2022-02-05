@@ -31,6 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
+          path: ./BookingDemo
          
       - name: 'Echo Upload path'
         run: echo Upload path ${{steps.upload.outputs.upload-path}}
