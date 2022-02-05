@@ -55,4 +55,4 @@ jobs:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: 'BookingDemo-0.0.1-SNAPSHOT.war'
+          package: '/BookingDemo/target/*.war'
