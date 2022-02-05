@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Old script
+name: Build and deploy WAR app to Azure Web App - afkl-demo-app-java
 
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -22,17 +22,13 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn clean install -DskipTests
-        working-directory: ./BookingDemo
-            # cd ./BookingDemo            
-            # mvn clean install -f ./BookingDemo -DskipTests
+        run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: ./BookingDemo       
-    
+          path: '${{ github.workspace }}/target/*.war'
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,7 +42,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/BookingDemo-0.0.1-SNAPSHOT.war'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -54,5 +49,5 @@ jobs:
         with:
           app-name: 'afkl-demo-app-java'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_564E43E4BAC342D9A76E0478552682AD }}
-          package: '/RomanianCoderExamples/BookingDemo/target/BookingDemo-0.0.1-SNAPSHOT.war'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8257B7104FCA431F9985F428B214E831 }}
+          package: '*.war'
