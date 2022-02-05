@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - afkl-demo-app-java
+name: Build and Deploy v 3.0
 
 on:
   push:
@@ -22,7 +22,9 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install -DskipTests
+        working-directory: ./BookingDemo
+       # run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
